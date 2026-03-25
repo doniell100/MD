@@ -409,101 +409,87 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <script>
-        // PAGE NAVIGATION
-        function goToPage(pageName) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById(`page-${pageName}`).classList.add('active');
-            window.scrollTo(0, 0);
-        }
+    // --- PASTE YOUR GOOGLE WEB APP URL BELOW ---
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwOxee4YGdOrMrj8RzVHDxBXKPkW374uQQq6Nluzg2tCck-j1DXoCDnPacHOOf-4gn4/exec';
+    // -------------------------------------------
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('open');
-        }
-
-        // MODAL LOGIC
-        const modal = document.getElementById('booking-modal');
-        const modalContent = document.getElementById('modal-content');
-        const form = document.getElementById('booking-form');
-        const successMsg = document.getElementById('success-message');
-
-        function openModal() {
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-95');
-            modalContent.classList.add('scale-100');
-            form.reset();
-            form.classList.remove('hidden');
-            successMsg.classList.add('hidden');
-        }
-
-        function closeModal() {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-        }
-
-        modal.addEventListener('click', (e) => {
-            if(e.target === modal) closeModal();
-        });
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                form.classList.add('hidden');
-                successMsg.classList.remove('hidden');
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }, 1500);
-        });
-
-        // DATEPICKER
-        const dateInput = document.getElementById('date');
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
-
-        // GSAP ANIMATIONS
-        gsap.registerPlugin(ScrollTrigger);
+    // 1. NAVIGATION LOGIC (The 3-line menu)
+    function navigate(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+        // Show the page you clicked
+        const target = document.getElementById('page-' + pageId);
+        if(target) target.classList.remove('hidden');
         
-        gsap.to('.gsap-hero', {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-            delay: 0.2
-        });
+        // Close the menu overlay if it's open
+        document.getElementById('nav-overlay').classList.remove('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-        gsap.utils.toArray('.gsap-fade-up').forEach(element => {
-            gsap.to(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                },
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: "power2.out"
-            });
-        });
+    function toggleNavMenu() {
+        document.getElementById('nav-overlay').classList.toggle('active');
+    }
 
-        // NAVBAR SCROLL EFFECT
+    // 2. GOOGLE SHEETS BOOKING LOGIC
+    const form = document.getElementById('booking-form');
+    const successMsg = document.getElementById('success-message');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
+        btn.disabled = true;
+
+        // Pulling data from your form fields
+        const formData = {
+            name: form.querySelectorAll('input[type="text"]')[0].value,
+            vehicle: form.querySelectorAll('input[type="text"]')[1].value,
+            service: form.querySelector('select').value,
+            date: form.querySelector('input[type="date"]').value
+        };
+
+        // This is the "handshake" with your Google Sheet
+        fetch(scriptURL, { 
+            method: 'POST', 
+            body: JSON.stringify(formData) 
+        })
+        .then(response => {
+            form.classList.add('hidden');
+            successMsg.classList.remove('hidden');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        })
+        .catch(error => {
+            alert('Booking failed. Check your Script URL and Deployment settings.');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+    });
+
+    // 3. MODAL CONTROLS
+    function openModal() {
+        document.getElementById('booking-modal').classList.remove('opacity-0', 'pointer-events-none');
+        form.reset();
+        form.classList.remove('hidden');
+        successMsg.classList.add('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('booking-modal').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    // 4. NAVBAR SCROLL EFFECT
+    window.addEventListener('scroll', () => {
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('glass-nav');
-                navbar.classList.remove('py-5');
-                navbar.classList.add('py-3');
-            } else {
-                navbar.classList.remove('glass-nav');
-                navbar.classList.add('py-5');
-                navbar.classList.remove('py-3');
-            }
-        });
-    </script>
+        if (window.scrollY > 50) {
+            navbar.classList.add('bg-black/90', 'backdrop-blur-md', 'py-3');
+            navbar.classList.remove('py-5');
+        } else {
+            navbar.classList.remove('bg-black/90', 'backdrop-blur-md', 'py-3');
+            navbar.classList.add('py-5');
+        }
+    });
+</script>
 </body>
 </html>
