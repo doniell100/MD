@@ -80,7 +80,7 @@
                 <p class="text-lg md:text-xl text-gray-300 font-light mb-12 max-w-3xl mx-auto leading-relaxed">Professional car care, brought to you. Borrowdale - Highlands - Chisipite - Mount Pleasant</p>
                 <div class="flex flex-col sm:flex-row gap-6 justify-center">
                     <button onclick="openModal()" class="px-12 py-4 bg-gold text-navy uppercase text-xs tracking-[0.2em] font-bold rounded-sm hover:brightness-110 transition-all">Get a Free Quote</button>
-                    <a href="https://wa.me/263784654825" target="_blank" class="px-12 py-4 border-2 border-gold text-gold uppercase text-xs tracking-[0.2em] font-bold rounded-sm hover:bg-gold hover:text-navy transition-all flex items-center justify-center">WhatsApp Us</a>
+                    <a href="https://wa.me/27789465115" target="_blank" class="px-12 py-4 border-2 border-gold text-gold uppercase text-xs tracking-[0.2em] font-bold rounded-sm hover:bg-gold hover:text-navy transition-all flex items-center justify-center">WhatsApp Us</a>
                 </div>
             </div>
         </header>
@@ -326,13 +326,13 @@
             <h3 class="text-3xl font-serif text-white mb-8 text-center">Reservation</h3>
             
             <form id="booking-form" class="space-y-5">
-                <input type="text" placeholder="Full Name" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
+                <input type="text" name="full-name" placeholder="Full Name" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
                 <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Phone" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
-                    <input type="text" placeholder="Suburb" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
+                    <input type="text" name="phone" placeholder="Phone" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
+                    <input type="text" name="suburb" placeholder="Suburb" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
                 </div>
-                <input type="text" placeholder="Vehicle Make/Model" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
-                <select required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
+                <input type="text" name="vehicle" placeholder="Vehicle Make/Model" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
+                <select name="service" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
                     <option value="" disabled selected>Select Service</option>
                     <option value="Maintenance Wash">Maintenance Wash</option>
                     <option value="Wash and Wax">Wash and Wax</option>
@@ -344,7 +344,7 @@
                     <option value="Ceramic">Ceramic Coating</option>
                     <option value="Care Plan">Care Plan Subscription</option>
                 </select>
-                <input type="date" id="date" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-gray-400 rounded-sm font-light">
+                <input type="date" name="date" id="date" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-gray-400 rounded-sm font-light">
                 <button type="submit" class="w-full bg-gold py-5 uppercase text-[11px] tracking-[0.2em] font-bold text-navy shadow-lg hover:brightness-110 transition-all rounded-sm">Submit Inquiry</button>
             </form>
             <div id="success-message" class="hidden text-center py-12">
@@ -365,7 +365,6 @@
             const targetPage = document.getElementById('page-' + pageId);
             if(targetPage) {
                 targetPage.classList.remove('hidden');
-                // Set active class on nav buttons
                 const links = document.querySelectorAll('.nav-link');
                 links.forEach(link => {
                     if(link.getAttribute('onclick').includes(pageId)) link.classList.add('active-nav');
