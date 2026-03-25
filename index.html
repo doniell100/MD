@@ -417,7 +417,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
    <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxcsPG91Txr8RBOW0Y2sPMdFAdif-zRkikltg-LZq8/dev'; 
+    // 1. PASTE YOUR NEW EXEC URL HERE
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwrXEBv1y4KophvuW3Fuwz643H6ALOJORFRZSi4NGeGL0i9DGo74R489FiG7kTqtZtw/exec'; 
 
     const form = document.getElementById('booking-form');
     const successMsg = document.getElementById('success-message');
@@ -428,12 +429,13 @@
         btn.disabled = true;
         btn.innerText = 'Sending...';
 
-        // This must match the names used in the Apps Script above
+        // 2. THIS GRABS DATA FROM YOUR FORM INPUTS IN ORDER
+        // Make sure your form has 4 text inputs, 1 select, and 1 date input
         const formData = {
-            name: form.querySelectorAll('input')[0].value,
-            phone: form.querySelectorAll('input')[1].value,
-            suburb: form.querySelectorAll('input')[2].value,
-            vehicle: form.querySelectorAll('input')[3].value,
+            name: form.querySelectorAll('input[type="text"]')[0].value,
+            phone: form.querySelectorAll('input[type="text"]')[1].value,
+            suburb: form.querySelectorAll('input[type="text"]')[2].value,
+            vehicle: form.querySelectorAll('input[type="text"]')[3].value,
             service: form.querySelector('select').value,
             date: form.querySelector('input[type="date"]').value
         };
@@ -449,13 +451,34 @@
             btn.innerText = 'Submit Request';
         })
         .catch(error => {
-            alert('Booking failed. Please check your connection.');
+            alert('Error connecting to Google Sheets. Check your script deployment.');
             btn.disabled = false;
             btn.innerText = 'Submit Request';
         });
     });
 
-    // Keep your existing openModal, closeModal, and navigate functions below this line...
+    // 3. PAGE NAVIGATION & MODAL LOGIC
+    function navigate(pageId) {
+        document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+        document.getElementById('page-' + pageId).classList.remove('hidden');
+        document.getElementById('nav-overlay').classList.remove('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openModal() {
+        document.getElementById('booking-modal').classList.remove('opacity-0', 'pointer-events-none');
+        form.reset();
+        form.classList.remove('hidden');
+        successMsg.classList.add('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('booking-modal').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function toggleNavMenu() {
+        document.getElementById('nav-overlay').classList.toggle('active');
+    }
 </script>
 </body>
 </html>
