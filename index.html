@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,42 +17,40 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['Montserrat', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        gold: '#C5A059',
-                        navy: '#020617',
-                        darker: '#010409',
+                        navy: '#1B2A4A',
+                        gold: '#C9A84C',
+                        nearblack: '#111111',
                     }
                 }
             }
         }
     </script>
     <style>
-        .glass-nav { background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(197, 160, 89, 0.1); }
         .page-view { transition: opacity 0.5s ease-in-out; }
-        .gold-gradient { background: linear-gradient(135deg, #C5A059 0%, #947234 100%); }
-        .luxury-border { border: 1px solid rgba(197, 160, 89, 0.2); }
-        .hero-gradient { background: linear-gradient(to bottom, transparent, #020617); }
+        .luxury-border { border: 1px solid rgba(201, 168, 76, 0.2); }
+        .hero-gradient { background: linear-gradient(to bottom, rgba(17,17,17,0.3), #111111); }
     </style>
 </head>
-<body class="antialiased bg-navy text-gray-200">
+<body class="antialiased bg-nearblack text-gray-200 font-sans">
 
-    <nav id="navbar" class="fixed w-full z-50 py-6 glass-nav transition-all">
+    <nav id="navbar" class="fixed w-full z-50 py-5 bg-navy shadow-lg shadow-black/50 transition-all border-b border-gold/10">
         <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
             <a href="#" onclick="navigate('home')" class="text-2xl font-serif font-bold tracking-[0.2em] text-white flex items-center gap-3">
                 <span class="text-gold">M</span>AISON
             </a>
             
-            <div class="hidden lg:flex items-center space-x-10 text-[10px] tracking-[0.3em] uppercase font-bold">
-                <button onclick="navigate('home')" class="hover:text-gold transition-colors text-white/80 hover:text-white">Home</button>
-                <button onclick="navigate('services')" class="hover:text-gold transition-colors text-white/80 hover:text-white">Services</button>
-                <button onclick="navigate('ceramic')" class="hover:text-gold transition-colors text-white/80 hover:text-white">Ceramic Coating</button>
-                <button onclick="navigate('gallery')" class="hover:text-gold transition-colors text-white/80 hover:text-white">Gallery</button>
-                <button onclick="navigate('faq')" class="hover:text-gold transition-colors text-white/80 hover:text-white">FAQ</button>
-                <button onclick="navigate('about')" class="hover:text-gold transition-colors text-white/80 hover:text-white">About</button>
-                <button onclick="openModal()" class="px-8 py-3 gold-gradient text-white hover:brightness-110 transition-all rounded-sm shadow-lg shadow-gold/10">Book Now</button>
+            <div class="hidden lg:flex items-center space-x-8 text-[11px] tracking-[0.2em] uppercase font-bold">
+                <button onclick="navigate('home')" class="hover:text-gold transition-colors text-white">Home</button>
+                <button onclick="navigate('services')" class="hover:text-gold transition-colors text-white">Services</button>
+                <button onclick="navigate('ceramic')" class="hover:text-gold transition-colors text-white">Ceramic Coating</button>
+                <button onclick="navigate('gallery')" class="hover:text-gold transition-colors text-white">Gallery</button>
+                <button onclick="navigate('faq')" class="hover:text-gold transition-colors text-white">FAQ</button>
+                <button onclick="navigate('about')" class="hover:text-gold transition-colors text-white">About</button>
+                <button onclick="openModal()" class="px-8 py-3 bg-gold text-navy hover:brightness-110 transition-all rounded-sm font-bold shadow-md">Book Now</button>
             </div>
 
             <button class="lg:hidden text-2xl text-gold" onclick="toggleNavMenu()">
@@ -61,131 +59,342 @@
         </div>
     </nav>
 
-    <div id="nav-overlay" class="fixed inset-0 bg-navy/fe backdrop-blur-2xl z-[60] hidden flex-col items-center justify-center space-y-8 uppercase tracking-[0.3em] font-sans">
-        <button onclick="navigate('home')" class="text-lg">Home</button>
-        <button onclick="navigate('services')" class="text-lg">Services</button>
-        <button onclick="navigate('ceramic')" class="text-lg">Ceramic Coating</button>
-        <button onclick="navigate('gallery')" class="text-lg">Gallery</button>
-        <button onclick="navigate('faq')" class="text-lg">FAQ</button>
-        <button onclick="navigate('about')" class="text-lg">About</button>
-        <button onclick="openModal(); toggleNavMenu();" class="text-gold text-lg border-b border-gold/30 pb-2">Book Now</button>
-        <button onclick="toggleNavMenu()" class="absolute top-10 right-10 text-3xl text-gold">×</button>
+    <div id="nav-overlay" class="fixed inset-0 bg-navy/98 backdrop-blur-xl z-[60] hidden flex-col items-center justify-center space-y-8 uppercase tracking-[0.2em] font-sans font-bold">
+        <button onclick="navigate('home')" class="text-lg text-white">Home</button>
+        <button onclick="navigate('services')" class="text-lg text-white">Services</button>
+        <button onclick="navigate('ceramic')" class="text-lg text-white">Ceramic Coating</button>
+        <button onclick="navigate('gallery')" class="text-lg text-white">Gallery</button>
+        <button onclick="navigate('faq')" class="text-lg text-white">FAQ</button>
+        <button onclick="navigate('about')" class="text-lg text-white">About</button>
+        <button onclick="openModal(); toggleNavMenu();" class="bg-gold text-navy px-10 py-3 mt-4 rounded-sm">Book Now</button>
+        <button onclick="toggleNavMenu()" class="absolute top-8 right-8 text-3xl text-gold">×</button>
     </div>
 
     <div id="page-home" class="page-view block">
         <header class="relative h-screen flex items-center justify-center overflow-hidden">
             <img src="BMW3.jpg" alt="Luxury Hero" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-navy/60 hero-gradient"></div>
-            <div class="relative z-10 text-center px-6 max-w-5xl">
-                <span class="text-gold uppercase tracking-[0.6em] text-[10px] font-bold mb-6 block">Harare's Definitive Detailing Studio</span>
-                <h1 class="text-6xl md:text-8xl font-serif text-white mb-8 italic leading-tight">Artisanal Protection</h1>
-                <p class="text-xl text-gray-300 font-light mb-12 max-w-2xl mx-auto leading-relaxed">Experience white-glove automotive care delivered to your doorstep. We specialize in the preservation of Zimbabwe's finest vehicles.</p>
+            <div class="absolute inset-0 hero-gradient"></div>
+            <div class="relative z-10 text-center px-6 max-w-5xl mt-20">
+                <span class="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-6 block">Harare's Premier Mobile Detailer</span>
+                <h1 class="text-5xl md:text-7xl font-serif text-white mb-8 leading-tight">Artisanal Automotive<br><span class="italic text-gold">Protection.</span></h1>
+                <p class="text-lg text-gray-300 font-light mb-12 max-w-2xl mx-auto leading-relaxed">White-glove vehicle care delivered to your doorstep. Specializing in the preservation of Zimbabwe's finest automobiles.</p>
                 <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                    <button onclick="openModal()" class="px-12 py-5 gold-gradient text-white uppercase text-[11px] tracking-[0.3em] font-bold rounded-sm">Secure a Date</button>
-                    <button onclick="navigate('services')" class="px-12 py-5 border border-white/30 text-white uppercase text-[11px] tracking-[0.3em] font-bold hover:bg-white hover:text-navy transition-all rounded-sm">The Services</button>
+                    <button onclick="openModal()" class="px-12 py-4 bg-gold text-navy uppercase text-xs tracking-[0.2em] font-bold rounded-sm hover:brightness-110 transition-all">Secure a Date</button>
                 </div>
             </div>
         </header>
+
+        <section class="py-24 bg-nearblack px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <i class="fa-solid fa-gem text-3xl text-gold mb-6"></i>
+                <h2 class="text-4xl font-serif text-white mb-6">The Standard of Excellence</h2>
+                <p class="text-gray-400 leading-relaxed font-light text-lg">
+                    Maison Detailing was founded on a singular philosophy: perfection is not optional. We do not run a volume-based car wash; we operate a bespoke mobile detailing studio. Utilizing pH-neutral chemistry, spot-free water filtration, and master-level polishing techniques, we ensure your investment remains flawless under the harsh African sun.
+                </p>
+                <button onclick="navigate('about')" class="mt-8 text-gold uppercase tracking-widest text-xs font-bold border-b border-gold pb-1 hover:text-white transition-colors">Discover Our Story</button>
+            </div>
+        </section>
         
-        <section class="py-32 bg-navy px-8">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="group overflow-hidden luxury-border">
-                    <img src="Detailing 3.jpg" class="aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700">
+        <section class="py-24 bg-[#151515] px-8 border-y border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-serif text-white mb-16 text-center">Signature Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-nearblack luxury-border overflow-hidden flex flex-col group">
+                        <div class="h-64 overflow-hidden"><img src="Detailing 3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-xl font-serif text-white mb-3">Exterior Restoration</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow font-light">Multi-stage decontamination, machine polish, and premium sealant application.</p>
+                            <button onclick="navigate('services')" class="w-full py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">View Details</button>
+                        </div>
+                    </div>
+                    <div class="bg-nearblack luxury-border overflow-hidden flex flex-col group">
+                        <div class="h-64 overflow-hidden"><img src="door card.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-xl font-serif text-white mb-3">Interior Sanctuary</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow font-light">Deep steam extraction, leather conditioning, and anti-bacterial UV protection.</p>
+                            <button onclick="navigate('services')" class="w-full py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">View Details</button>
+                        </div>
+                    </div>
+                    <div class="bg-nearblack luxury-border overflow-hidden flex flex-col group">
+                        <div class="h-64 overflow-hidden"><img src="ceramic3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-xl font-serif text-white mb-3">Ceramic Coatings</h3>
+                            <p class="text-sm text-gray-400 mb-6 flex-grow font-light">Multi-year liquid glass protection against elements, dirt, and severe UV rays.</p>
+                            <button onclick="navigate('ceramic')" class="w-full py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Explore Coatings</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="group overflow-hidden luxury-border">
-                    <img src="door card.webp" class="aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+        </section>
+
+        <section class="py-24 bg-nearblack px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-serif text-white mb-16 text-center italic">Client Testimonials</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 luxury-border bg-[#151515]">
+                        <div class="text-gold mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="text-gray-400 font-light italic mb-6">"Absolutely incredible service. They came to my office in Borrowdale and made my Range Rover look better than the day it left the showroom."</p>
+                        <p class="text-white font-bold text-sm tracking-wide">— Tinashe M.</p>
+                    </div>
+                    <div class="p-8 luxury-border bg-[#151515]">
+                        <div class="text-gold mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="text-gray-400 font-light italic mb-6">"The attention to detail on the interior is unmatched. Every vent, every seam in the leather was perfectly cleaned and conditioned."</p>
+                        <p class="text-white font-bold text-sm tracking-wide">— Sarah K.</p>
+                    </div>
+                    <div class="p-8 luxury-border bg-[#151515]">
+                        <div class="text-gold mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="text-gray-400 font-light italic mb-6">"I had my Porsche ceramic coated by Maison. The gloss and depth of the paint now is stunning. Highly professional mobile setup."</p>
+                        <p class="text-white font-bold text-sm tracking-wide">— David R.</p>
+                    </div>
                 </div>
-                <div class="group overflow-hidden luxury-border">
-                    <img src="BMW3.jpg" class="aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700">
-                </div>
+            </div>
+        </section>
+
+        <section class="py-32 bg-navy px-8 text-center relative overflow-hidden border-t border-gold/20">
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <i class="fa-solid fa-location-dot text-4xl text-gold mb-6"></i>
+                <h2 class="text-4xl font-serif text-white mb-6">Mobile Operations Across Harare</h2>
+                <p class="text-gray-300 font-light mb-10 text-lg">From Mt Pleasant to Highlands, our fully self-sufficient mobile detailing studio brings luxury automotive care directly to your driveway or office.</p>
+                <button onclick="openModal()" class="px-12 py-4 bg-gold text-navy uppercase text-xs tracking-[0.2em] font-bold rounded-sm shadow-xl hover:scale-105 transition-transform">Book Your Appointment</button>
             </div>
         </section>
     </div>
 
-    <div id="page-services" class="page-view hidden pt-40 pb-32 bg-navy min-h-screen">
+    <div id="page-services" class="page-view hidden pt-32 pb-32 bg-nearblack min-h-screen">
         <div class="max-w-6xl mx-auto px-8">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-serif text-white mb-4 italic">Tailored Services</h2>
+                <h2 class="text-5xl font-serif text-white mb-4">Service Menu</h2>
+                <p class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-8">Comprehensive Automotive Care</p>
                 <div class="h-px w-20 bg-gold/50 mx-auto"></div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-darker/50 p-12 luxury-border shadow-2xl">
-                <div class="space-y-12">
-                    <div class="group">
-                        <div class="flex justify-between items-end mb-3">
-                            <h3 class="text-lg text-white font-serif tracking-widest uppercase">Exterior Restoration</h3>
-                            <span class="text-gold font-bold font-sans">From $150</span>
-                        </div>
-                        <p class="text-sm text-gray-400 font-light">Multi-stage decontamination, machine polish, and premium sealant application.</p>
-                    </div>
-                    <div class="group">
-                        <div class="flex justify-between items-end mb-3">
-                            <h3 class="text-lg text-white font-serif tracking-widest uppercase">Interior Sanctuary</h3>
-                            <span class="text-gold font-bold font-sans">From $150</span>
-                        </div>
-                        <p class="text-sm text-gray-400 font-light">Deep steam extraction, leather conditioning, and anti-bacterial fogging.</p>
-                    </div>
-                    <div class="group">
-                        <div class="flex justify-between items-end mb-3">
-                            <h3 class="text-lg text-white font-serif tracking-widest uppercase">The Maison Signature</h3>
-                            <span class="text-gold font-bold font-sans">From $250</span>
-                        </div>
-                        <p class="text-sm text-gray-400 font-light">Our comprehensive full-day package covering every inch of your vehicle.</p>
+            <div class="space-y-16 mb-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <img src="Interior 2.jpeg" class="w-full h-80 object-cover luxury-border shadow-lg">
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-serif text-white">Interior Deep Clean</h3>
+                        <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-gold mb-4"><span><i class="fa-regular fa-clock"></i> 3 Hours</span> | <span>From $150</span></div>
+                        <p class="text-gray-400 font-light leading-relaxed">Comprehensive vacuum, steam extraction of carpets, and thorough cleansing of all plastics and trims. We finish with a UV-protective, non-greasy dressing.</p>
+                        <button onclick="openModal()" class="mt-4 px-8 py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Get a Quote</button>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <img src="Interior 2.jpeg" class="w-full h-48 object-cover luxury-border">
-                    <img src="Boot.jpg" class="w-full h-48 object-cover luxury-border">
-                    <img src="RR1.jpg" class="w-full h-48 object-cover luxury-border">
-                    <img src="Paint correction.jpg" class="w-full h-48 object-cover luxury-border">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-4 order-2 md:order-1">
+                        <h3 class="text-3xl font-serif text-white">Exterior Decontamination</h3>
+                        <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-gold mb-4"><span><i class="fa-regular fa-clock"></i> 2.5 Hours</span> | <span>From $120</span></div>
+                        <p class="text-gray-400 font-light leading-relaxed">A rigorous hand-wash followed by chemical iron removal and a mechanical clay bar treatment. Leaves paint smooth as glass, finished with a silica sealant.</p>
+                        <button onclick="openModal()" class="mt-4 px-8 py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Get a Quote</button>
+                    </div>
+                    <img src="Boot.jpg" class="w-full h-80 object-cover luxury-border shadow-lg order-1 md:order-2">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <img src="RR1.jpg" class="w-full h-80 object-cover luxury-border shadow-lg">
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-serif text-white">The Maison Signature</h3>
+                        <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-gold mb-4"><span><i class="fa-regular fa-clock"></i> 6 Hours</span> | <span>From $250</span></div>
+                        <p class="text-gray-400 font-light leading-relaxed">Our most comprehensive package combining full interior restoration and exterior decontamination. Every inch of your vehicle is addressed to showroom standards.</p>
+                        <button onclick="openModal()" class="mt-4 px-8 py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Get a Quote</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-4 order-2 md:order-1">
+                        <h3 class="text-3xl font-serif text-white">Paint Correction</h3>
+                        <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-gold mb-4"><span><i class="fa-regular fa-clock"></i> 1-2 Days</span> | <span>Quote Only</span></div>
+                        <p class="text-gray-400 font-light leading-relaxed">Multi-stage machine compounding and polishing to permanently remove swirl marks, scratches, and oxidation. Restores true depth and clarity to clear coats.</p>
+                        <button onclick="openModal()" class="mt-4 px-8 py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Get a Quote</button>
+                    </div>
+                    <img src="Paint correction.jpg" class="w-full h-80 object-cover luxury-border shadow-lg order-1 md:order-2">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <img src="Detailing 2.jpg" class="w-full h-80 object-cover luxury-border shadow-lg">
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-serif text-white">Engine Bay Detailing</h3>
+                        <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-gold mb-4"><span><i class="fa-regular fa-clock"></i> 1 Hour</span> | <span>$60</span></div>
+                        <p class="text-gray-400 font-light leading-relaxed">Safe degreasing and agitation of engine components. Plastics and hoses are dressed to a factory satin finish, protecting them from dry rotting.</p>
+                        <button onclick="openModal()" class="mt-4 px-8 py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Get a Quote</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-4 order-2 md:order-1">
+                        <h3 class="text-3xl font-serif text-white">Headlight Restoration</h3>
+                        <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-gold mb-4"><span><i class="fa-regular fa-clock"></i> 1.5 Hours</span> | <span>$80</span></div>
+                        <p class="text-gray-400 font-light leading-relaxed">Wet-sanding and machine polishing of faded, yellowed headlight housings. Restores nighttime visibility and is sealed with a UV-resistant ceramic coating.</p>
+                        <button onclick="openModal()" class="mt-4 px-8 py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Get a Quote</button>
+                    </div>
+                    <img src="Raptor 2.jpg" class="w-full h-80 object-cover luxury-border shadow-lg order-1 md:order-2">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <img src="door card.webp" class="w-full h-80 object-cover luxury-border shadow-lg">
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-serif text-white">Leather Treatment</h3>
+                        <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-gold mb-4"><span><i class="fa-regular fa-clock"></i> 1.5 Hours</span> | <span>$90</span></div>
+                        <p class="text-gray-400 font-light leading-relaxed">Deep pore cleansing of leather seats and door cards to remove body oils and dye transfer. Nourished with premium conditioners to prevent cracking.</p>
+                        <button onclick="openModal()" class="mt-4 px-8 py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Get a Quote</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-4 order-2 md:order-1">
+                        <h3 class="text-3xl font-serif text-white">Heavy Debris & Odor</h3>
+                        <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-gold mb-4"><span><i class="fa-regular fa-clock"></i> +2 Hours</span> | <span>$100 Add-on</span></div>
+                        <p class="text-gray-400 font-light leading-relaxed">Specialized removal of excessive pet hair, heavy mud, or ingrained odors using enzymatic cleaners and ozone gas treatments.</p>
+                        <button onclick="openModal()" class="mt-4 px-8 py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm">Get a Quote</button>
+                    </div>
+                    <img src="Toyota.jpg" class="w-full h-80 object-cover luxury-border shadow-lg order-1 md:order-2">
+                </div>
+            </div>
+
+            <div class="mt-32 pt-16 border-t border-white/10">
+                <h3 class="text-3xl font-serif text-white mb-8 text-center">Pricing Reference</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b-2 border-gold text-gold uppercase text-xs tracking-widest">
+                                <th class="py-4 px-4 font-bold">Service</th>
+                                <th class="py-4 px-4 font-bold">Sedans / Coupes</th>
+                                <th class="py-4 px-4 font-bold">Mid-Size SUV</th>
+                                <th class="py-4 px-4 font-bold">Large SUV / Truck</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300 text-sm font-light">
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-4 px-4 font-medium text-white">Exterior Decontamination</td>
+                                <td class="py-4 px-4">$120</td>
+                                <td class="py-4 px-4">$140</td>
+                                <td class="py-4 px-4">$160</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-4 px-4 font-medium text-white">Interior Deep Clean</td>
+                                <td class="py-4 px-4">$150</td>
+                                <td class="py-4 px-4">$170</td>
+                                <td class="py-4 px-4">$190</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-4 px-4 font-medium text-white">Maison Signature</td>
+                                <td class="py-4 px-4">$250</td>
+                                <td class="py-4 px-4">$280</td>
+                                <td class="py-4 px-4">$320</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-4 px-4 font-medium text-white">Paint Correction</td>
+                                <td class="py-4 px-4 text-gold italic" colspan="3">By Consultation Only</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="page-ceramic" class="page-view hidden pt-40 pb-32 bg-navy min-h-screen">
+    <div id="page-ceramic" class="page-view hidden pt-32 pb-32 bg-nearblack min-h-screen">
         <div class="max-w-7xl mx-auto px-8">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-serif text-white mb-4 italic">Ceramic Coating</h2>
-                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-8">Ultimate Paint Protection & Gloss Enhancement</p>
+                <h2 class="text-5xl font-serif text-white mb-4">Ceramic Coating</h2>
+                <p class="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-8">Ultimate Paint Protection & Gloss</p>
                 <div class="h-px w-20 bg-gold/50 mx-auto"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="luxury-border overflow-hidden">
-                    <img src="ceramic3.jpg" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+                <div class="bg-[#151515] luxury-border p-10 flex flex-col text-center">
+                    <h3 class="text-2xl font-serif text-white mb-2">Essential</h3>
+                    <p class="text-gold font-bold mb-6">1-Year Protection</p>
+                    <p class="text-gray-400 font-light text-sm flex-grow mb-8">Perfect for daily drivers. Provides excellent hydrophobics and a deep gloss finish that makes maintenance washing a breeze.</p>
+                    <button onclick="openModal()" class="w-full py-3 border border-gold text-gold font-bold uppercase text-xs tracking-widest rounded-sm hover:bg-gold hover:text-navy transition-colors">Select Tier</button>
                 </div>
-                <div class="luxury-border overflow-hidden">
-                    <img src="ceramic2.jpg" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                <div class="bg-navy luxury-border p-10 flex flex-col text-center relative shadow-2xl scale-105">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gold text-navy px-4 py-1 text-[10px] font-bold uppercase tracking-widest">Most Popular</div>
+                    <h3 class="text-2xl font-serif text-white mb-2">Premium</h3>
+                    <p class="text-gold font-bold mb-6">3-Year Protection</p>
+                    <p class="text-gray-300 font-light text-sm flex-grow mb-8">A thicker, more resilient quartz layer. Offers superior resistance to UV oxidation, bird droppings, and light wash marring.</p>
+                    <button onclick="openModal()" class="w-full py-3 bg-gold text-navy font-bold uppercase text-xs tracking-widest rounded-sm shadow-lg">Select Tier</button>
                 </div>
-                <div class="luxury-border overflow-hidden">
-                    <img src="ceramic.jpg" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
-                </div>
-                <div class="luxury-border overflow-hidden">
-                    <img src="ceramic6.jpg" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                <div class="bg-[#151515] luxury-border p-10 flex flex-col text-center">
+                    <h3 class="text-2xl font-serif text-white mb-2">Elite</h3>
+                    <p class="text-gold font-bold mb-6">5+ Year Protection</p>
+                    <p class="text-gray-400 font-light text-sm flex-grow mb-8">Multi-layer 9H ceramic matrix. The absolute pinnacle of chemical resistance, self-cleaning properties, and mirror-like depth.</p>
+                    <button onclick="openModal()" class="w-full py-3 border border-gold text-gold font-bold uppercase text-xs tracking-widest rounded-sm hover:bg-gold hover:text-navy transition-colors">Select Tier</button>
                 </div>
             </div>
 
-            <div class="mt-20 bg-darker/30 p-12 text-center luxury-border">
-                <h3 class="text-2xl font-serif text-gold mb-6 italic">Liquid Glass Technology</h3>
-                <p class="text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
-                    Our ceramic coatings create a permanent, hydrophobic bond with your vehicle's surface. This ultra-hard layer provides unparalleled protection against Zimbabwe’s harsh UV rays, chemical etching, and environmental fallout while delivering a mirror-like depth that waxes cannot replicate.
-                </p>
+            <div class="mb-24">
+                <h3 class="text-3xl font-serif text-white mb-10 text-center">The Installation Process</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 rounded-full bg-navy border border-gold text-gold flex items-center justify-center mx-auto mb-4 font-bold">1</div>
+                        <h4 class="text-white font-serif mb-2">Decontamination</h4>
+                        <p class="text-xs text-gray-400 font-light">Chemical and mechanical stripping of all existing waxes and embedded iron particles.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 rounded-full bg-navy border border-gold text-gold flex items-center justify-center mx-auto mb-4 font-bold">2</div>
+                        <h4 class="text-white font-serif mb-2">Correction</h4>
+                        <p class="text-xs text-gray-400 font-light">Machine polishing to remove defects. Coating requires a flawless canvas to bond correctly.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 rounded-full bg-navy border border-gold text-gold flex items-center justify-center mx-auto mb-4 font-bold">3</div>
+                        <h4 class="text-white font-serif mb-2">Panel Prep</h4>
+                        <p class="text-xs text-gray-400 font-light">Alcohol wipe-down to remove polishing oils, ensuring bare clear coat for maximum adhesion.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 rounded-full bg-navy border border-gold text-gold flex items-center justify-center mx-auto mb-4 font-bold">4</div>
+                        <h4 class="text-white font-serif mb-2">Application</h4>
+                        <p class="text-xs text-gray-400 font-light">Hand-applied liquid quartz flashing and leveling, locking in the finish permanently.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-24">
+                <h3 class="text-3xl font-serif text-white mb-10 text-center">The Results</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="relative luxury-border">
+                        <img src="ceramic.jpg" class="w-full h-96 object-cover">
+                        <div class="absolute bottom-4 left-4 bg-nearblack/80 px-4 py-2 text-gold text-xs font-bold uppercase tracking-widest border border-gold/30">Hydrophobic Beading</div>
+                    </div>
+                    <div class="relative luxury-border">
+                        <img src="ceramic2.jpg" class="w-full h-96 object-cover">
+                        <div class="absolute bottom-4 right-4 bg-nearblack/80 px-4 py-2 text-gold text-xs font-bold uppercase tracking-widest border border-gold/30">Mirror Gloss Finish</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-[#151515] luxury-border p-12 mb-16">
+                <div>
+                    <h3 class="text-2xl font-serif text-gold mb-6">Crucial Curing Instructions</h3>
+                    <p class="text-gray-300 font-light leading-relaxed mb-4">
+                        Ceramic coatings crystallize over time. While the vehicle is safe to drive shortly after application, strict care must be taken during the initial curing phase:
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><i class="fa-solid fa-triangle-exclamation text-gold mr-2"></i> <strong>First 24 Hours:</strong> Keep vehicle dry. Avoid rain or sprinklers.</li>
+                        <li><i class="fa-solid fa-triangle-exclamation text-gold mr-2"></i> <strong>First 7 Days:</strong> Avoid bird droppings or tree sap. Wipe off immediately if exposed.</li>
+                        <li><i class="fa-solid fa-triangle-exclamation text-gold mr-2"></i> <strong>First 14 Days:</strong> Do not wash the vehicle with soap or chemicals.</li>
+                    </ul>
+                </div>
+                <img src="ceramic6.jpg" class="w-full h-64 object-cover luxury-border">
+            </div>
+
+            <div class="text-center">
+                <h3 class="text-3xl font-serif text-white mb-6">Ready to Protect Your Investment?</h3>
+                <button onclick="openModal()" class="px-12 py-4 bg-gold text-navy uppercase text-xs tracking-[0.2em] font-bold rounded-sm shadow-lg hover:scale-105 transition-transform">Request a Consultation</button>
             </div>
         </div>
     </div>
 
-    <div id="page-gallery" class="page-view hidden pt-40 pb-32 bg-darker">
+    <div id="page-gallery" class="page-view hidden pt-32 pb-32 bg-nearblack">
         <div class="max-w-7xl mx-auto px-8">
             <div class="text-center mb-24">
-                <h2 class="text-5xl font-serif text-white mb-6 italic">The Gallery</h2>
+                <h2 class="text-5xl font-serif text-white mb-6">The Gallery</h2>
                 <p class="text-gray-400 max-w-2xl mx-auto font-light leading-relaxed uppercase tracking-widest text-[10px]">A showcase of meticulous standards and automotive excellence.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mb-32">
                 <img src="Lexus.jpg" class="shadow-2xl luxury-border">
                 <div class="space-y-8">
-                    <h3 class="text-3xl font-serif text-gold italic">Preserving the Finish</h3>
+                    <h3 class="text-3xl font-serif text-gold">Preserving the Finish</h3>
                     <p class="text-gray-400 leading-relaxed font-light">Harare's environmental conditions demand high-tier protection. We utilize industry-leading coatings to shield your paint from high-UV exposure and road fallout.</p>
                     <div class="grid grid-cols-2 gap-6 pt-6">
                         <div class="border-l border-gold/30 pl-4"><span class="block text-white font-bold">100%</span><span class="text-[10px] uppercase text-gray-500 tracking-tighter">UV Shielding</span></div>
@@ -211,86 +420,113 @@
         </div>
     </div>
 
-    <div id="page-faq" class="page-view hidden pt-40 pb-32 bg-navy">
-        <div class="max-w-4xl mx-auto px-8">
-            <h2 class="text-5xl font-serif text-white mb-16 text-center italic">Enquiries</h2>
-            <div class="space-y-8">
-                <div class="bg-darker p-10 luxury-border">
-                    <h4 class="text-gold font-bold mb-4 uppercase text-[10px] tracking-[0.3em]">Durations</h4>
-                    <p class="text-gray-300 text-sm font-light leading-relaxed">Our processes are unhurried. Expect a minimum of 4 hours for standard details and up to 2 days for full paint correction projects.</p>
-                </div>
-                <div class="bg-darker p-10 luxury-border">
-                    <h4 class="text-gold font-bold mb-4 uppercase text-[10px] tracking-[0.3em]">Mobile Capability</h4>
-                    <p class="text-gray-300 text-sm font-light leading-relaxed">We operate a fully self-sufficient mobile unit. We bring our own filtered water supply and silent power generators to your location in Harare.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="page-about" class="page-view hidden pt-40 pb-32 bg-navy">
-        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20">
-            <div class="flex flex-col justify-center">
-                <h2 class="text-5xl font-serif text-white mb-8 italic">The Maison Story</h2>
-                <p class="text-gray-400 mb-10 font-light leading-relaxed">Based in Harare, Maison Detailing was founded on a simple principle: perfection is the only standard. We provide a bespoke experience for owners who view their vehicles not just as transport, but as investments and art.</p>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
-                    <div class="bg-darker p-6 luxury-border">
-                        <i class="fa-solid fa-phone text-gold mb-4 text-xl"></i>
-                        <span class="block text-white">+263 784654825</span>
-                        <span class="block text-white">+263 773155823</span>
-                    </div>
-                    <div class="bg-darker p-6 luxury-border">
-                        <i class="fa-solid fa-envelope text-gold mb-4 text-xl"></i>
-                        <span class="block text-white">maisoncardetailing@gmail.com</span>
-                    </div>
-                </div>
-
-                <div class="flex gap-8 mt-12">
-                    <a href="#" class="text-xl text-gray-500 hover:text-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="text-xl text-gray-500 hover:text-gold transition-colors"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" class="text-xl text-gray-500 hover:text-gold transition-colors"><i class="fa-brands fa-youtube"></i></a>
-                    <span class="text-[10px] text-gray-600 uppercase tracking-widest self-center">@maisoncardetailing</span>
-                </div>
-            </div>
+    <div id="page-about" class="page-view hidden pt-32 pb-32 bg-nearblack">
+        <div class="max-w-7xl mx-auto px-8">
             
-            <div class="bg-darker p-12 luxury-border flex flex-col justify-center items-center text-center">
-                <div class="w-20 h-20 gold-gradient rounded-full flex items-center justify-center mb-8 shadow-xl shadow-gold/20">
-                    <i class="fa-solid fa-car-side text-white text-3xl"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-center">
+                <div>
+                    <h2 class="text-5xl font-serif text-white mb-8">The Maison Story</h2>
+                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
+                        Based in the heart of Harare, Maison Detailing was born from a passion for automotive perfection. We recognized a gap in the market: traditional car washes were degrading clear coats, while dedicated studios required clients to leave their vehicles for days. We solved this by bringing studio-level detailing directly to your location.
+                    </p>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8">
+                        Our approach is purely scientific. We utilize strictly pH-neutral, professional-grade chemicals, plush microfiber media, and spot-free filtered water to guarantee zero wash-induced marring. We don't just clean cars; we recondition them.
+                    </p>
+                    <div class="flex gap-8 border-t border-white/10 pt-8">
+                        <div>
+                            <span class="block text-2xl font-serif text-gold mb-1">500+</span>
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500">Vehicles Perfected</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-serif text-gold mb-1">100%</span>
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500">Mobile Capability</span>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-2xl font-serif text-white mb-4 italic">Harare Mobile Operations</h3>
-                <p class="text-gray-400 font-light mb-8 max-w-sm">We provide premier mobile detailing services across Harare and all surrounding suburbs. From Borrowdale to Glen Lorne, we bring the studio to you.</p>
-                <button onclick="openModal()" class="text-gold uppercase tracking-widest text-[10px] font-bold border-b border-gold/50 pb-2">Check Availability</button>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="BMW3.jpg" class="w-full h-64 object-cover luxury-border">
+                    <img src="Interior 2.jpeg" class="w-full h-64 object-cover luxury-border mt-8">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 bg-[#151515] luxury-border">
+                <div class="p-12 flex flex-col justify-center">
+                    <h3 class="text-3xl font-serif text-white mb-8">Contact & Operations</h3>
+                    <div class="space-y-6 text-sm mb-12">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-phone text-gold text-lg w-6"></i>
+                            <span class="text-gray-300 tracking-wide">+263 784654825 <br> +263 773155823</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-envelope text-gold text-lg w-6"></i>
+                            <span class="text-gray-300 tracking-wide">maisoncardetailing@gmail.com</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-location-dot text-gold text-lg w-6"></i>
+                            <span class="text-gray-300 tracking-wide">Fully Mobile Service <br> Harare & Surrounding Suburbs</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <a href="#" class="text-xl text-gray-500 hover:text-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-xl text-gray-500 hover:text-gold transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="text-xl text-gray-500 hover:text-gold transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                        <span class="text-[10px] text-gray-600 uppercase tracking-widest self-center ml-2">@maisoncardetailing</span>
+                    </div>
+                </div>
+                <div class="h-96 w-full overflow-hidden border-l border-gold/20">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Harare,Zimbabwe&t=&z=11&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" height="100%" style="border:0; filter: grayscale(1) invert(1) contrast(1.2);" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="booking-modal" class="fixed inset-0 bg-navy/95 z-[100] opacity-0 pointer-events-none transition-all flex items-center justify-center p-6">
-        <div class="bg-darker luxury-border p-12 max-w-lg w-full relative shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-3xl text-gray-500 hover:text-gold">×</button>
-            <h3 class="text-3xl font-serif text-white mb-8 text-center italic">Reservation</h3>
+    <div id="page-faq" class="page-view hidden pt-32 pb-32 bg-nearblack">
+        <div class="max-w-4xl mx-auto px-8">
+            <h2 class="text-5xl font-serif text-white mb-16 text-center">Enquiries</h2>
+            <div class="space-y-6">
+                <div class="bg-[#151515] p-8 luxury-border">
+                    <h4 class="text-gold font-bold mb-3 uppercase text-[10px] tracking-[0.3em]">Durations</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Our processes are unhurried. Expect a minimum of 4 hours for standard details and up to 2 days for full paint correction projects.</p>
+                </div>
+                <div class="bg-[#151515] p-8 luxury-border">
+                    <h4 class="text-gold font-bold mb-3 uppercase text-[10px] tracking-[0.3em]">Mobile Capability</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">We operate a fully self-sufficient mobile unit. We bring our own filtered water supply and silent power generators to your location in Harare.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="booking-modal" class="fixed inset-0 bg-nearblack/95 z-[100] opacity-0 pointer-events-none transition-all flex items-center justify-center p-6 backdrop-blur-sm">
+        <div class="bg-navy luxury-border p-12 max-w-lg w-full relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-gold">×</button>
+            <h3 class="text-3xl font-serif text-white mb-8 text-center">Reservation</h3>
             
             <form id="booking-form" class="space-y-5">
-                <input type="text" placeholder="Full Name" required class="w-full bg-navy border border-gold/10 p-4 text-sm focus:border-gold outline-none text-white rounded-sm">
+                <input type="text" placeholder="Full Name" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
                 <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Phone" required class="w-full bg-navy border border-gold/10 p-4 text-sm focus:border-gold outline-none text-white rounded-sm">
-                    <input type="text" placeholder="Suburb" required class="w-full bg-navy border border-gold/10 p-4 text-sm focus:border-gold outline-none text-white rounded-sm">
+                    <input type="text" placeholder="Phone" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
+                    <input type="text" placeholder="Suburb" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
                 </div>
-                <input type="text" placeholder="Vehicle Make/Model" required class="w-full bg-navy border border-gold/10 p-4 text-sm focus:border-gold outline-none text-white rounded-sm">
-                <select required class="w-full bg-navy border border-gold/10 p-4 text-sm focus:border-gold outline-none text-white rounded-sm">
+                <input type="text" placeholder="Vehicle Make/Model" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
+                <select required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-white rounded-sm font-light">
                     <option value="" disabled selected>Select Service</option>
                     <option value="Exterior">Exterior Restoration</option>
                     <option value="Interior">Interior Sanctuary</option>
                     <option value="Full">The Maison Signature</option>
+                    <option value="Ceramic">Ceramic Coating</option>
                 </select>
-                <input type="date" required class="w-full bg-navy border border-gold/10 p-4 text-sm focus:border-gold outline-none text-white rounded-sm">
-                <button type="submit" class="w-full gold-gradient py-5 uppercase text-[11px] tracking-[0.3em] font-bold text-white shadow-xl shadow-gold/10">Submit Inquiry</button>
+                <input type="date" required class="w-full bg-[#111] border border-gold/20 p-4 text-sm focus:border-gold outline-none text-gray-400 rounded-sm font-light">
+                <button type="submit" class="w-full bg-gold py-5 uppercase text-[11px] tracking-[0.2em] font-bold text-navy shadow-lg hover:brightness-110 transition-all rounded-sm">Submit Inquiry</button>
             </form>
             <div id="success-message" class="hidden text-center py-12">
                 <div class="w-16 h-16 border-2 border-gold rounded-full flex items-center justify-center mx-auto mb-6">
                     <i class="fa-solid fa-check text-gold text-2xl"></i>
                 </div>
-                <p class="text-white font-serif text-xl italic">Reservation request received.</p>
-                <p class="text-gray-500 text-xs mt-2 uppercase tracking-widest">We will contact you shortly.</p>
+                <p class="text-white font-serif text-2xl mb-2">Request Received.</p>
+                <p class="text-gray-400 text-sm font-light">We will contact you shortly to confirm.</p>
             </div>
         </div>
     </div>
@@ -344,7 +580,6 @@
             });
         });
 
-        // Date restriction
         const dateInput = document.querySelector('input[type="date"]');
         if(dateInput) {
             const today = new Date().toISOString().split('T')[0];
