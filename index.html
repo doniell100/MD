@@ -48,6 +48,7 @@
             <div class="hidden lg:flex items-center space-x-10 text-[10px] tracking-[0.3em] uppercase font-bold">
                 <button onclick="navigate('home')" class="hover:text-gold transition-colors text-white/80 hover:text-white">Home</button>
                 <button onclick="navigate('services')" class="hover:text-gold transition-colors text-white/80 hover:text-white">Services</button>
+                <button onclick="navigate('ceramic')" class="hover:text-gold transition-colors text-white/80 hover:text-white">Ceramic Coating</button>
                 <button onclick="navigate('gallery')" class="hover:text-gold transition-colors text-white/80 hover:text-white">Gallery</button>
                 <button onclick="navigate('faq')" class="hover:text-gold transition-colors text-white/80 hover:text-white">FAQ</button>
                 <button onclick="navigate('about')" class="hover:text-gold transition-colors text-white/80 hover:text-white">About</button>
@@ -60,9 +61,10 @@
         </div>
     </nav>
 
-    <div id="nav-overlay" class="fixed inset-0 bg-navy/fe backdrop-blur-2xl z-[60] hidden flex-col items-center justify-center space-y-10 uppercase tracking-[0.3em] font-sans">
+    <div id="nav-overlay" class="fixed inset-0 bg-navy/fe backdrop-blur-2xl z-[60] hidden flex-col items-center justify-center space-y-8 uppercase tracking-[0.3em] font-sans">
         <button onclick="navigate('home')" class="text-lg">Home</button>
         <button onclick="navigate('services')" class="text-lg">Services</button>
+        <button onclick="navigate('ceramic')" class="text-lg">Ceramic Coating</button>
         <button onclick="navigate('gallery')" class="text-lg">Gallery</button>
         <button onclick="navigate('faq')" class="text-lg">FAQ</button>
         <button onclick="navigate('about')" class="text-lg">About</button>
@@ -137,6 +139,38 @@
                     <img src="RR1.jpg" class="w-full h-48 object-cover luxury-border">
                     <img src="Paint correction.jpg" class="w-full h-48 object-cover luxury-border">
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-ceramic" class="page-view hidden pt-40 pb-32 bg-navy min-h-screen">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-serif text-white mb-4 italic">Ceramic Coating</h2>
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-8">Ultimate Paint Protection & Gloss Enhancement</p>
+                <div class="h-px w-20 bg-gold/50 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="luxury-border overflow-hidden">
+                    <img src="ceramic3.jpg" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="luxury-border overflow-hidden">
+                    <img src="ceramic2.jpg" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="luxury-border overflow-hidden">
+                    <img src="ceramic.jpg" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="luxury-border overflow-hidden">
+                    <img src="ceramic6.jpg" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+            </div>
+
+            <div class="mt-20 bg-darker/30 p-12 text-center luxury-border">
+                <h3 class="text-2xl font-serif text-gold mb-6 italic">Liquid Glass Technology</h3>
+                <p class="text-gray-400 font-light max-w-3xl mx-auto leading-relaxed">
+                    Our ceramic coatings create a permanent, hydrophobic bond with your vehicle's surface. This ultra-hard layer provides unparalleled protection against Zimbabwe’s harsh UV rays, chemical etching, and environmental fallout while delivering a mirror-like depth that waxes cannot replicate.
+                </p>
             </div>
         </div>
     </div>
