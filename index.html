@@ -49,7 +49,6 @@
                 <button onclick="navigate('services')" class="nav-link hover:text-gold transition-colors text-white">Services</button>
                 <button onclick="navigate('ceramic')" class="nav-link hover:text-gold transition-colors text-white">Ceramic Coating</button>
                 <button onclick="navigate('gallery')" class="nav-link hover:text-gold transition-colors text-white">Gallery</button>
-                <button onclick="navigate('faq')" class="nav-link hover:text-gold transition-colors text-white">FAQ</button>
                 <button onclick="navigate('about')" class="nav-link hover:text-gold transition-colors text-white">About</button>
                 <button onclick="navigate('contact')" class="nav-link hover:text-gold transition-colors text-white">Contact</button>
                 <button onclick="navigate('contact')" class="px-8 py-3 bg-gold text-navy hover:brightness-110 transition-all rounded-sm font-bold shadow-md">Book Now</button>
@@ -66,7 +65,6 @@
         <button onclick="navigate('services')" class="text-lg text-white">Services</button>
         <button onclick="navigate('ceramic')" class="text-lg text-white">Ceramic Coating</button>
         <button onclick="navigate('gallery')" class="text-lg text-white">Gallery</button>
-        <button onclick="navigate('faq')" class="text-lg text-white">FAQ</button>
         <button onclick="navigate('about')" class="text-lg text-white">About</button>
         <button onclick="navigate('contact')" class="text-lg text-white">Contact</button>
         <button onclick="navigate('contact'); toggleNavMenu();" class="bg-gold text-navy px-10 py-3 mt-4 rounded-sm">Book Now</button>
@@ -352,22 +350,6 @@
         </div>
     </div>
 
-    <div id="page-faq" class="page-view hidden pt-32 pb-32 bg-nearblack">
-        <div class="max-w-4xl mx-auto px-8">
-            <h2 class="text-5xl font-serif text-white mb-16 text-center">Common Enquiries</h2>
-            <div class="space-y-6">
-                <div class="bg-[#151515] p-10 luxury-border">
-                    <h4 class="text-gold font-bold mb-4 uppercase text-[11px] tracking-[0.3em]">Durations</h4>
-                    <p class="text-gray-400 text-base font-light leading-relaxed">Our processes are unhurried. Expect a minimum of 4 hours for standard details and up to 2 days for paint correction.</p>
-                </div>
-                <div class="bg-[#151515] p-10 luxury-border">
-                    <h4 class="text-gold font-bold mb-4 uppercase text-[11px] tracking-[0.3em]">Mobile Capability</h4>
-                    <p class="text-gray-400 text-base font-light leading-relaxed">We operate a self-sufficient unit with filtered water and silent power generators.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div id="page-about" class="page-view hidden pt-32 pb-32 bg-nearblack">
         <div class="max-w-7xl mx-auto px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-center">
@@ -471,7 +453,6 @@
             const targetPage = document.getElementById('page-' + pageId);
             if(targetPage) {
                 targetPage.classList.remove('hidden');
-                // Target all instances of nav links (mobile and desktop)
                 const links = document.querySelectorAll('.nav-link');
                 links.forEach(link => {
                     if(link.getAttribute('onclick').includes(pageId)) link.classList.add('active-nav');
@@ -487,7 +468,6 @@
             menu.classList.toggle('flex');
         }
 
-        // Handle Contact Form Submission
         const contactForm = document.getElementById('contact-form');
         const contactSuccess = document.getElementById('contact-success');
 
@@ -497,8 +477,6 @@
             btn.innerText = 'TRANSMITTING REQUEST...';
             btn.disabled = true;
 
-            // Functional Note: This mirrors the existing site logic for UI testing.
-            // Connect to your Maison business email settings via your hosting provider.
             setTimeout(() => {
                 contactForm.classList.add('hidden');
                 contactSuccess.classList.remove('hidden');
