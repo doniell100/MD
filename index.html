@@ -496,29 +496,24 @@
             };
 
             // Replace with your Google Apps Script deployment URL
-            const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-ln0LCDe7uy8WT5k6vCT4a3Ox2QbzgLcyoaMeNdAlRCvi-QyHoUtgibIJth4lqnJq2w/exec';
+            const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-ln0LCDe7uy8WT5k6vCT4a3Ox2QbzgLcyoaMeNdAlRCvi-QyHoUtgibIJth4lqnJq2w/exechttps://script.google.com/macros/s/AKfycbyr-ASFqhTUdf0r86jbjmUjptzbKAxMyMAYGaL6iBQ4XbNrED-Gl-oMw9Gb8pU4iWJNUg/exec';
 
             // Send data to Google Apps Script
             fetch(APPS_SCRIPT_URL, {
                 method: 'POST',
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData),
+                mode: 'no-cors'
             })
-            .then(response => response.json())
-            .then(data => {
-                if(data.status === 'success') {
-                    contactForm.classList.add('hidden');
-                    contactSuccess.classList.remove('hidden');
-                } else {
-                    btn.innerText = 'REQUEST MY FREE QUOTE';
-                    btn.disabled = false;
-                    alert('Error submitting form. Please try again.');
-                }
+            .then(response => {
+                // With no-cors mode, we can't read the response, so just assume success
+                contactForm.classList.add('hidden');
+                contactSuccess.classList.remove('hidden');
             })
             .catch(error => {
                 console.error('Error:', error);
                 btn.innerText = 'REQUEST MY FREE QUOTE';
                 btn.disabled = false;
-                alert('Error submitting form. Please try again.');
+                alert('Error submitting form. Please check your internet connection and try again.');
             });
         });
     </script>
