@@ -60,7 +60,7 @@
         </div>
     </nav>
 
-    <div id="nav-overlay" class="fixed inset-0 bg-navy/98 backdrop-blur-xl z-[60] hidden flex-col items-center justify-center space-y-8 uppercase tracking-[0.2em] font-sans font-bold">
+    <div id="nav-overlay" class="fixed inset-0 bg-navy/98 backdrop-blur-xl z- hidden flex-col items-center justify-center space-y-8 uppercase tracking-[0.2em] font-sans font-bold">
         <button onclick="navigate('home')" class="text-lg text-white">Home</button>
         <button onclick="navigate('services')" class="text-lg text-white">Services</button>
         <button onclick="navigate('ceramic')" class="text-lg text-white">Nasiol Professional Ceramic Coating</button>
@@ -170,7 +170,16 @@
                     <div>
                         <h3 class="text-3xl font-serif text-white mb-2">Maintenance Wash</h3>
                         <div class="flex gap-4 text-gold text-xs font-bold uppercase tracking-widest mb-6"><span>45-60 min</span> | <span>From $40</span></div>
-                        <p class="text-gray-400 font-light leading-relaxed mb-8">SP1 prewash, foam wash, H2O Coat rinse protection, glass clean, tyre dressing.</p>
+                        <div class="text-gray-400 font-light leading-relaxed mb-8">
+                            <p class="mb-2"><strong class="text-white font-medium">Description:</strong> Your vehicle's regular maintenance, done to a professional standard. Every wash builds on the last.</p>
+                            <p class="mb-1"><strong class="text-white font-medium">Includes:</strong></p>
+                            <p>• SP1 prewash — touchless dirt removal<br>
+                            • Neve S2 foam wash — pH neutral<br>
+                            • H2O Coat SiO2 rinse protection<br>
+                            • Exterior glass clean<br>
+                            • Tyre dressing<br>
+                            • Interior wipe down</p>
+                        </div>
                         <button onclick="navigate('contact', 'Maintenance Wash')" class="px-8 py-3 bg-gold text-navy font-bold uppercase text-[10px] tracking-widest rounded-sm">Book This Service</button>
                     </div>
                 </div>
@@ -179,7 +188,18 @@
                     <div class="order-2 md:order-1 text-right">
                         <h3 class="text-3xl font-serif text-white mb-2">Wash and Wax</h3>
                         <div class="flex gap-4 justify-end text-gold text-xs font-bold uppercase tracking-widest mb-6"><span>60-90 min</span> | <span>From $70</span></div>
-                        <p class="text-gray-400 font-light leading-relaxed mb-8">Full hand wash with SiO2 spray sealant protection. Builds durability with every application.</p>
+                        <div class="text-gray-400 font-light leading-relaxed mb-8">
+                            <p class="mb-2"><strong class="text-white font-medium">Description:</strong> A thorough hand wash with SiO2 spray sealant protection applied to the wet vehicle. Durability builds with every application.</p>
+                            <p class="mb-1"><strong class="text-white font-medium">Includes:</strong></p>
+                            <p>• SP1 prewash<br>
+                            • Neve S2 foam wash<br>
+                            • Two-bucket hand wash method<br>
+                            • Protector Wax<br>
+                            • Exterior glass clean<br>
+                            • Tyre dressing<br>
+                            • Trim dressing<br>
+                            • Interior wipe down and vacuuming</p>
+                        </div>
                         <button onclick="navigate('contact', 'Wash and Wax')" class="px-8 py-3 bg-gold text-navy font-bold uppercase text-[10px] tracking-widest rounded-sm">Book This Service</button>
                     </div>
                     <img src="ceramic3.jpg" class="w-full h-96 object-cover luxury-border order-1 md:order-2">
@@ -500,10 +520,10 @@
             const select = contactForm.querySelector('select');
 
             const formData = {
-                name: textInputs[0].value,
-                phone: textInputs[1].value,
-                suburb: textInputs[2].value,
-                vehicle: textInputs[3].value,
+                name: textInputs.value,
+                phone: textInputs.value,
+                suburb: textInputs.value,
+                vehicle: textInputs.value,
                 service: select.value,
                 notes: textarea.value || 'No additional notes'
             };
